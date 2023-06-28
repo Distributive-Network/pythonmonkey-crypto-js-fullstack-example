@@ -27,6 +27,9 @@ class MyServer(BaseHTTPRequestHandler):
       message = user_data[0].split("=")[1]
       key     = user_data[1].split("=")[1]
 
+      #
+      # aes.encrypt() is a JavaScript function
+      #
       cipher = aes.encrypt(message, key)
 
       # respond with the encrypted string
@@ -45,6 +48,9 @@ class MyServer(BaseHTTPRequestHandler):
       cipher = user_data[0].split("=")[1].replace("%3D", "=").replace("%2F", "/")
       key    = user_data[1].split("=")[1]
 
+      #
+      # aes.decrypt() is a JavaScript function
+      #
       plain_text = aes.decrypt(cipher, key)
 
       # respond with the decrypted string
