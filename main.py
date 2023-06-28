@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
+"""
+This is a simple fullstack app that allows a user to encrypt and
+decrypt arbitrary text.
+"""
 
+#
+# use PythonMonkey require to require the aes JavaScript module
+#
 import pythonmonkey as pm
 require = pm.createRequire(__file__)
 aes = require("./aes")
@@ -25,9 +32,8 @@ class MyServer(BaseHTTPRequestHandler):
       f.close()
       return
 
+    # handle requests for encrypting a strign
     elif (self.path.split("?")[0] == '/encrypt'):
-      print("encrypting string...")
-
       message = params['message'][0]
       key = params['key'][0]
 
@@ -40,15 +46,12 @@ class MyServer(BaseHTTPRequestHandler):
       self.send_response(200)
       self.send_header("Content-type", "text/html")
       self.end_headers()
-      self.wfile.write(bytes("<html><head><title>AES Encryption</title></head>", "utf-8"))
-      self.wfile.write(bytes("<body>", "utf-8"))
-      self.wfile.write(bytes(f"the encrypted string is: {cipher}", "utf-8"))
-      self.wfile.write(bytes("</body></html>", "utf-8"))
+      writeHTMLresponse(self.wfile.write, f"The encrypted string is: {cipher}")
+      print(cipher)
       return
 
+    # handle requests for decrypting a strign
     elif (self.path.split("?")[0] == '/decrypt'):
-      print("decrypting string...")
-
       cipher = params['ciphertext'][0]
       key = params['key'][0]
 
@@ -61,26 +64,27 @@ class MyServer(BaseHTTPRequestHandler):
       self.send_response(200)
       self.send_header("Content-type", "text/html")
       self.end_headers()
-      self.wfile.write(bytes("<html><head><title>AES Encryption</title></head>", "utf-8"))
-      self.wfile.write(bytes("<body>", "utf-8"))
-      self.wfile.write(bytes(f"the decrypted string is: {plain_text}", "utf-8"))
-      self.wfile.write(bytes("</body></html>", "utf-8"))
+      writeHTMLresponse(self.wfile.write, f"The decrypted string is: {plain_text}")
+      print(plain_text)
       return
 
     else:
       self.send_response(404)
       self.send_header("Content-type", "text/html")
       self.end_headers()
-      self.wfile.write(bytes("404 not found", "utf-8"))
+      writeHTMLresponse(self.wfile.write, "404 not found")
+
+def writeHTMLresponse(writer, message):
+  writer(bytes("<html><head><title>AES Encryption</title></head>", "utf-8"))
+  writer(bytes("<body>", "utf-8"))
+  writer(bytes(f"{message}", "utf-8"))
+  writer(bytes("</body></html>", "utf-8")) 
 
 myServer = HTTPServer((hostName, hostPort), MyServer)
-print(time.asctime(), "Server Starts - %s:%s" % (hostName, hostPort))
+print(time.asctime(), "Server running at http://%s:%s" % (hostName, hostPort))
 
 try:
-    myServer.serve_forever()
+  myServer.serve_forever()
 except KeyboardInterrupt:
-    pass
-
-myServer.server_close()
-print(time.asctime(), "Server Stops - %s:%s" % (hostName, hostPort))
+  myServer.server_close()
 
