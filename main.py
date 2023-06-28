@@ -49,8 +49,6 @@ class MyServer(BaseHTTPRequestHandler):
     elif (self.path.split("?")[0] == '/decrypt'):
       print("decrypting string...")
 
-      import pdb; pdb.set_trace()
-
       cipher = params['ciphertext'][0]
       key = params['key'][0]
 
