@@ -5,6 +5,7 @@ require = pm.createRequire(__file__)
 aes = require("./aes")
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from urllib.parse import parse_qs, urlparse
 import time
 
 hostName = "localhost"
@@ -12,6 +13,9 @@ hostPort = 9000
 
 class MyServer(BaseHTTPRequestHandler):
   def do_GET(self):
+    parsed_path = urlparse(self.path)
+    params = parse_qs(parsed_path.query)
+
     if (self.path == '/'):
       f = open("./index.html", 'rb')
       self.send_response(200)
@@ -23,9 +27,9 @@ class MyServer(BaseHTTPRequestHandler):
 
     elif (self.path.split("?")[0] == '/encrypt'):
       print("encrypting string...")
-      user_data = self.path.split("?")[1].split("&")
-      message = user_data[0].split("=")[1]
-      key     = user_data[1].split("=")[1]
+
+      message = params['message'][0]
+      key = params['key'][0]
 
       #
       # aes.encrypt() is a JavaScript function
@@ -44,9 +48,11 @@ class MyServer(BaseHTTPRequestHandler):
 
     elif (self.path.split("?")[0] == '/decrypt'):
       print("decrypting string...")
-      user_data = self.path.split("?")[1].split("&")
-      cipher = user_data[0].split("=")[1].replace("%3D", "=").replace("%2F", "/")
-      key    = user_data[1].split("=")[1]
+
+      import pdb; pdb.set_trace()
+
+      cipher = params['ciphertext'][0]
+      key = params['key'][0]
 
       #
       # aes.decrypt() is a JavaScript function

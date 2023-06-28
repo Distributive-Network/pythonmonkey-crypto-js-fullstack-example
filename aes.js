@@ -5,7 +5,7 @@ function encrypt(message, key) {
 }
 
 function decrypt(ciphertext, key) {
-  const bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+  const bytes  = CryptoJS.AES.decrypt(ciphertext, key);
   return bytes.toString(CryptoJS.enc.Utf8);
 }
 
