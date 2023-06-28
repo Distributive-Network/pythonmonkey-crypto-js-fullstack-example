@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>AES Crypto in PythonMonkey</title>
+  </head>
+  <body>
+    <p>This website uses the <a href="https://www.npmjs.com/package/crypto-js">CryptoJS NPM package</a> from Python for AES encryption and decryption!</p>
+    <p>Check out PythonMonkey at <a href="https://pythonmonkey.io/">http://pythonmonkey.io/</a></p>
+  </body>
+  <body>
+    <table>
+      <tr>
+        <th>
+          Encrypt
+        </th>
+        <th>
+          Decrypt
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <form id="form" method="GET" action="encrypt">
+            <label>Message</label>
+            <br>
+            <input id="user-message" type="text" name="message">
+            <br>
+            <label>Key</label>
+            <br>
+            <input id="user-key" type="text" name="key">
+            <br>
+            <input id="encode-button" type="submit" value="ENCRYPT">
+          </form>
+        </td>
+
+        <td>
+          <form id="form" method="GET" action="decrypt">
+            <label>Ciphertext</label>
+            <br>
+            <input id="user-ciphertext" type="text" name="ciphertext">
+            <br>
+            <label>Key</label>
+            <br>
+            <input id="user-key" type="text" name="key">
+            <br>
+            <input id="encode-button" type="submit" value="DECRYPT">
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+
