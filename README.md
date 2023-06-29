@@ -1,8 +1,8 @@
 # Fullstack AES encryption and decryption app that uses the crypto-js NPM package
 
-This repository contains an example of Python code executing JavaScript code from an NPM package using [PythonMonkey](http://pythonmonkey.io/). The Python code here is a web server that uses the [CryptoJS](https://www.npmjs.com/package/crypto-js) NPM package to encrypt and decrypt messages using AES. 
+This repository contains an example of Python code executing JavaScript code from an NPM package using [PythonMonkey](https://pythonmonkey.io/). The Python code here is a web server that uses the [CryptoJS](https://www.npmjs.com/package/crypto-js) NPM package to encrypt and decrypt messages using AES. 
 
-PythonMonkey is a Python library for executing JavaScript code in Python and Python code in JavaScript. Check out our website [http://pythonmonkey.io/](http://pythonmonkey.io/)!
+PythonMonkey is a Python library for executing JavaScript code in Python and Python code in JavaScript. Check out our website [https://pythonmonkey.io/](https://pythonmonkey.io/)!
 
 ## Demonstration
 
