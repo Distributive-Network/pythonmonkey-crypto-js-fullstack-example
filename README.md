@@ -19,3 +19,6 @@ PythonMonkey is a Python library for executing JavaScript code in Python and Pyt
 `$ python3 main.py`
 
 Open [http://localhost:9000/](http://localhost:9000/) on your browser
+
+## Other Examples
+For simpler and more comprehensive examples showing off Promises, WebAssembly and more PythonMonkey features, refer to [https://github.com/Distributive-Network/PythonMonkey-examples/](https://github.com/Distributive-Network/PythonMonkey-examples/).
