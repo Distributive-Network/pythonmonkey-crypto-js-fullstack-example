@@ -6,7 +6,7 @@ PythonMonkey is a Python library for executing JavaScript code in Python and Pyt
 
 ## Demonstration
 
-![2023-06-28 13-52-39](https://github.com/Distributive-Network/PythonMonkey-Crypto-JS-Fullstack-Example/assets/18359452/1f0886ea-c3ed-4061-867f-c876f1f8e653)
+![249767141-1f0886ea-c3ed-4061-867f-c876f1f8e653](https://github.com/Distributive-Network/PythonMonkey-Crypto-JS-Fullstack-Example/assets/18359452/3f771e4f-a0f5-46ca-93e1-c3d2f8c2bd1d)
 
 ## Installation
 
