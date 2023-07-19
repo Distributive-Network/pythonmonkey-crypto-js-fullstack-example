@@ -8,15 +8,14 @@ decrypt arbitrary text.
 # use PythonMonkey require to require the aes JavaScript module
 #
 import pythonmonkey as pm
-require = pm.createRequire(__file__)
-aes = require("./aes")
+aes = pm.require("./aes")
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qs, urlparse
 import time
 
 hostName = "localhost"
-hostPort = 9000
+hostPort = 9001
 
 class MyServer(BaseHTTPRequestHandler):
   def do_GET(self):
